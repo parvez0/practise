@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  redis1:
+    image: redis:latest
+    deploy:
+      replicas: 1
+    networks:
+      - hostnet
+    volumes:
+      - ./node-1.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+  redis2:
+    image: redis:latest
+    deploy:
+      replicas: 1
+    networks:
+      - hostnet
+    volumes:
+      - ./node-2.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+  redis3:
+    image: redis:latest
+    deploy:
+      replicas: 1
+    networks:
+      - hostnet
+    volumes:
+      - ./node-3.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+networks:
+  hostnet:
+    external: true
+    name: host

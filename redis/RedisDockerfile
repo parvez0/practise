@@ -1,0 +1,6 @@
+FROM redis
+RUN apt update && apt install -y python3
+COPY . /app
+WORKDIR /app
+RUN ls
+CMD python3 create-cluster.py && /bin/bash

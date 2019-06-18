@@ -1,0 +1,19 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: getpods
+spec:
+  selector:
+    matchLabels:
+      app: getpods
+      #replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: getpods
+    spec:
+      containers:
+      - name: getpods
+        image: firsttestym.azurecr.io/curl:latest
+        ports:
+        - containerPort: 3000
